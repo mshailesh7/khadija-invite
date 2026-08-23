@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /* type scale lifted from the reference layout */
+  --fs-name: clamp(46px, 13.4vw, 59px);
+  --fs-heading: clamp(33px, 9.3vw, 41px);
+  --fs-subheading: clamp(27px, 7.5vw, 33px);
+  --fs-venue: clamp(28px, 7.7vw, 34px);
+  --fs-body: clamp(19px, 4.8vw, 21px);
+  --fs-meta: clamp(17px, 4.3vw, 19px);
+  --fs-time: clamp(26px, 6.8vw, 30px);
+  --fs-count: clamp(38px, 10.2vw, 45px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f9e6d4;
+  color: #2a2a2a;
+  font-family: 'Cormorant Garamond', serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background: #e0a9a4;
+  color: #fffaf8;
+}
+
+@layer components {
+  /* Section title: script face, gold, matching the reference 41px rhythm */
+  .h-script {
+    font-family: 'Imperial Script', cursive;
+    font-size: var(--fs-heading);
+    line-height: 1.55;
+    color: #866739;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .t-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: var(--fs-body);
+    line-height: 1.35;
+    color: #2a2a2a;
+  }
+
+  .t-meta {
+    font-family: Ovo, serif;
+    font-size: var(--fs-meta);
+    color: #866739;
+  }
+
+  .font-urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+
+  .font-urdu-heading {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-weight: 500;
+  }
+
+  .t-body-urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: clamp(17px, 4.2vw, 19px);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+
+  [dir='rtl'] .h-script {
+    line-height: 1.85;
+  }
+
+  .sheet {
+    width: 100%;
+    max-width: 440px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
