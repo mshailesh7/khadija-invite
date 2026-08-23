@@ -22,8 +22,8 @@ html {
 
 body {
   margin: 0;
-  background: #f9e6d4;
-  color: #2a2a2a;
+  background: #fdf2f5;
+  color: #3d2a30;
   font-family: 'Cormorant Garamond', serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -36,8 +36,8 @@ body.is-locked {
 }
 
 ::selection {
-  background: #e0a9a4;
-  color: #fffaf8;
+  background: #f4a9b8;
+  color: #fffbfc;
 }
 
 @layer components {
@@ -46,7 +46,7 @@ body.is-locked {
     font-family: 'Imperial Script', cursive;
     font-size: var(--fs-heading);
     line-height: 1.55;
-    color: #866739;
+    color: #b86b7a;
     text-align: center;
     font-weight: 400;
   }
@@ -56,13 +56,13 @@ body.is-locked {
     font-weight: 300;
     font-size: var(--fs-body);
     line-height: 1.35;
-    color: #2a2a2a;
+    color: #3d2a30;
   }
 
   .t-meta {
     font-family: Ovo, serif;
     font-size: var(--fs-meta);
-    color: #866739;
+    color: #b86b7a;
   }
 
   .font-urdu {
@@ -78,7 +78,7 @@ body.is-locked {
     font-family: 'Noto Nastaliq Urdu', serif;
     font-size: clamp(17px, 4.2vw, 19px);
     line-height: 2;
-    color: #2a2a2a;
+    color: #3d2a30;
   }
 
   [dir='rtl'] .h-script {

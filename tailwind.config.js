@@ -4,16 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#f9e6d4',
-        'cream-light': '#fffaf8',
-        'cream-deep': '#efdfcd',
-        gold: '#866739',
-        'gold-soft': '#ac9778',
-        'gold-deep': '#876836',
-        blush: '#e0a9a4',
-        'blush-deep': '#c08286',
-        ink: '#2a2a2a',
-        'ink-soft': '#454545',
+        cream: '#fdf2f5',
+        'cream-light': '#fffbfc',
+        'cream-deep': '#f8e4ea',
+        gold: '#b86b7a',
+        'gold-soft': '#d497a3',
+        'gold-deep': '#9e5565',
+        blush: '#f4a9b8',
+        'blush-deep': '#e8879a',
+        'pink-soft': '#fce4ec',
+        'pink-mid': '#f0b4c4',
+        ink: '#3d2a30',
+        'ink-soft': '#5c454b',
         sage: '#747b54',
       },
       fontFamily: {

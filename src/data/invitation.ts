@@ -3,26 +3,23 @@ export type Lang = 'en' | 'ur'
 /** Shared facts — not translated. */
 export const eventMeta = {
   initial: 'K',
-  eventDate: '2026-08-24T19:00:00',
-  venueUrl: 'https://share.google/aMMtrTYbGhEFxxrgk',
-  /** Drop a photo at public/baby-photo.jpg to replace the illustration */
+  eventDate: '2026-08-30T20:00:00',
+  venueUrl: 'https://maps.app.goo.gl/mbrn9Q8tTRD7BNvb8?g_st=iw',
   babyPhoto: '/baby-photo.jpg',
 } as const
 
 export type LocaleCopy = {
   babyName: string
   babyNameShort: string
-  father: string
-  mother: string
   parents: string
   occasion: string
   welcomeLine: string
+  inviteLine: string
   date: {
     day: string
     month: string
     year: string
     weekday: string
-    /** small label under each number */
     dayLabel: string
     monthLabel: string
     yearLabel: string
@@ -76,36 +73,40 @@ export const copy: Record<Lang, LocaleCopy> = {
   en: {
     babyName: 'Khadija Vadgama',
     babyNameShort: 'Khadija',
-    father: 'Irshad Vadgama',
-    mother: 'Svaleha Irshad Vadgama',
-    parents: 'Irshad & Svaleha Vadgama',
-    occasion: 'Welcoming Our Precious Daughter To Our Lives',
-    welcomeLine: 'We Welcome You All To Join Us in Our Joy',
+    parents: 'Wadgama Family',
+    occasion: 'A Little Princess, A Lot of Love',
+    welcomeLine:
+      'With tiny hands, sweet smiles & a whole lot of happiness, we\u2019re celebrating our little baby girl!',
+    inviteLine:
+      'You\u2019re warmly invited to join us for a special evening of Dinner & Celebration as we celebrate our precious little princess.',
     date: {
-      day: '24',
+      day: '30',
       month: '08',
       year: '2026',
-      weekday: 'Monday',
+      weekday: 'Sunday',
       dayLabel: 'DD',
       monthLabel: 'MM',
       yearLabel: 'YYYY',
     },
     time: {
-      clock: '19:00',
+      clock: '20:00',
       note: 'Dinner & Celebration',
     },
-    messageBefore: `With hearts full of joy,
-Irshad & Svaleha Vadgama
-joyfully welcome their daughter`,
-    messageAfter: `We welcome you all to join us in our joy
+    messageBefore: `You're warmly invited to join us for a special evening of
+Dinner & Celebration as we celebrate our precious little princess.`,
+    messageAfter: `Come join us for a lovely evening filled with
+good food, warm conversations & beautiful memories.
 
-24 · 08 · 2026
-19:00
+Your presence will make our celebration even more special.
 
-Hotel Mina International`,
+30 · 08 · 2026
+20:00
+
+1st Floor, Mina International
+Jogeshwari West, Mumbai`,
     venue: {
-      name: 'Hotel Mina International',
-      city: 'Mumbai, India',
+      name: '1st Floor, Mina International',
+      city: 'Jogeshwari West, Mumbai',
       mapsLabel: 'Open in Google Maps',
     },
     sections: {
@@ -113,7 +114,7 @@ Hotel Mina International`,
       time: 'Time',
       littleOne: 'Our Little Princess',
       countdown: 'The Celebration Begins',
-      timeline: 'Order of the Day',
+      timeline: 'Order of the Evening',
       venue: 'Venue',
       dressCode: 'Dress Code',
     },
@@ -124,17 +125,17 @@ Hotel Mina International`,
       seconds: 'Seconds',
     },
     timeline: [
-      { time: '19:00', title: 'Welcome' },
-      { time: '19:30', title: 'Dinner' },
-      { time: '20:30', title: 'Celebration' },
+      { time: '20:00', title: 'Welcome' },
+      { time: '20:30', title: 'Dinner' },
+      { time: '21:30', title: 'Celebration' },
     ],
     dressCode: {
       intro:
-        'We kindly invite you to dress in elegant ethnic wear that reflects the warmth and joy of our celebration.',
-      wear: 'Ethnic Wear',
-      note: 'Traditional attire in rich colours is warmly encouraged for this special evening.',
+        'We invite you to dress in your festive best for this special evening of love and celebration.',
+      wear: 'Festive & Elegant',
+      note: 'Soft pinks, pastels, and elegant ethnic wear are all warmly welcome.',
     },
-    closing: 'We look forward to welcoming you',
+    closing: 'With love,',
     cover: {
       tapToOpen: 'Tap to open',
       openLabel: 'Tap to open the invitation',
@@ -150,36 +151,40 @@ Hotel Mina International`,
   ur: {
     babyName: 'خدیجہ وڈگامہ',
     babyNameShort: 'خدیجہ',
-    father: 'ارشد وڈگامہ',
-    mother: 'سوالیہ ارشد وڈگامہ',
-    parents: 'ارشد اور سوالیہ وڈگامہ',
-    occasion: 'اپنی پیاری بیٹی کو زندگی میں خوش آمدید',
-    welcomeLine: 'ہم آپ سب کو اپنی خوشی میں شامل ہونے کی دعوت دیتے ہیں',
+    parents: 'وڈگامہ خاندان',
+    occasion: 'ایک چھوٹی شہزادی، بے حد محبت',
+    welcomeLine:
+      'ننھے ہاتھوں، میٹھی مسکراہٹوں اور بے انتہا خوشیوں کے ساتھ، ہم اپنی پیاری بیٹی کا جشن منا رہے ہیں!',
+    inviteLine:
+      'ہم آپ کو رات کے کھانے اور جشن کی ایک خاص شام میں شامل ہونے کی گرمجوشی سے دعوت دیتے ہیں، جہاں ہم اپنی پیاری شہزادی کا جشن منائیں گے۔',
     date: {
-      day: '۲۴',
+      day: '۳۰',
       month: '۰۸',
       year: '۲۰۲۶',
-      weekday: 'پیر',
+      weekday: 'اتوار',
       dayLabel: 'DD',
       monthLabel: 'MM',
       yearLabel: 'YYYY',
     },
     time: {
-      clock: '۱۹:۰۰',
+      clock: '۲۰:۰۰',
       note: 'رات کا کھانا اور جشن',
     },
-    messageBefore: `دلوں بھر کر خوشی کے ساتھ،
-ارشد اور سوالیہ وڈگامہ
-اپنی بیٹی کا خوش آمدید کہتے ہیں`,
-    messageAfter: `ہم آپ سب کو اپنی خوشی میں شامل ہونے کی دعوت دیتے ہیں
+    messageBefore: `ہم آپ کو رات کے کھانے اور جشن کی ایک خاص شام میں
+شامل ہونے کی گرمجوشی سے دعوت دیتے ہیں۔`,
+    messageAfter: `ہمارے ساتھ ایک خوبصورت شام گزاریں —
+اچھی غذا، گرم گفتگو اور یادگار لمحات۔
 
-۲۴ · ۰۸ · ۲۰۲۶
-۱۹:۰۰
+آپ کی موجودگی ہمارے جشن کو اور بھی خاص بنائے گی۔
 
-Hotel Mina International`,
+۳۰ · ۰۸ · ۲۰۲۶
+۲۰:۰۰
+
+1st Floor, Mina International
+Jogeshwari West, Mumbai`,
     venue: {
-      name: 'Hotel Mina International',
-      city: 'ممبئی، بھارت',
+      name: '1st Floor, Mina International',
+      city: 'Jogeshwari West, ممبئی',
       mapsLabel: 'گوگل میپس میں کھولیں',
     },
     sections: {
@@ -187,7 +192,7 @@ Hotel Mina International`,
       time: 'وقت',
       littleOne: 'ہماری پیاری شہزادی',
       countdown: 'جشن شروع ہوتا ہے',
-      timeline: 'تقریب کا پروگرام',
+      timeline: 'شام کا پروگرام',
       venue: 'مقام',
       dressCode: 'لباس',
     },
@@ -198,17 +203,16 @@ Hotel Mina International`,
       seconds: 'سیکنڈ',
     },
     timeline: [
-      { time: '۱۹:۰۰', title: 'خوش آمدید' },
-      { time: '۱۹:۳۰', title: 'رات کا کھانا' },
-      { time: '۲۰:۳۰', title: 'جشن' },
+      { time: '۲۰:۰۰', title: 'خوش آمدید' },
+      { time: '۲۰:۳۰', title: 'رات کا کھانا' },
+      { time: '۲۱:۳۰', title: 'جشن' },
     ],
     dressCode: {
-      intro:
-        'ہم آپ سے درخواست کرتے ہیں کہ اس خاص شام کے لیے خوبصورت روایتی لباس پہنیں جو ہماری خوشی کی عکاسی کرے۔',
-      wear: 'روایتی لباس',
-      note: 'اس موقع کے لیے روایتی اور رنگین لباس کی حوصلہ افزائی کی جاتی ہے۔',
+      intro: 'اس خاص شام کے لیے براہِ کرم اپنے بہترین اور خوبصورت لباس میں تشریف لائیں۔',
+      wear: 'خوبصورت اور رسمی',
+      note: 'گلابی، پیسٹل اور روایتی لباس سب خوش آمدید ہیں۔',
     },
-    closing: 'آپ کے استقبال کے منتظر',
+    closing: 'محبت کے ساتھ،',
     cover: {
       tapToOpen: 'کھولنے کے لیے تھپتھپائیں',
       openLabel: 'دعوت نامہ کھولنے کے لیے تھپتھپائیں',

@@ -26,7 +26,7 @@ export function Cover({ onOpened }: Props) {
       transition={{ duration: 0.55 }}
     >
       <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-[#fbf0e6]"
+        className="absolute inset-x-0 top-0 h-1/2 bg-[#fce8ee]"
         animate={opening ? { y: '-101%' } : { y: 0 }}
         transition={{ duration: 1.35, delay: 0.95, ease: EASE }}
       >
@@ -36,7 +36,7 @@ export function Cover({ onOpened }: Props) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#fbf0e6]"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#fce8ee]"
         animate={opening ? { y: '101%' } : { y: 0 }}
         transition={{ duration: 1.35, delay: 0.95, ease: EASE }}
       >
@@ -45,8 +45,8 @@ export function Cover({ onOpened }: Props) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-y-0 left-0 z-[2] w-1/2 bg-[#fdf5ec]"
-        style={{ boxShadow: '10px 0 44px -20px rgba(134,103,57,0.5)' }}
+        className="absolute inset-y-0 left-0 z-[2] w-1/2 bg-[#fdf2f5]"
+        style={{ boxShadow: '10px 0 44px -20px rgba(184,107,122,0.35)' }}
         animate={opening ? { x: '-101%' } : { x: 0 }}
         transition={{ duration: 1.45, delay: 0.5, ease: EASE }}
       >
@@ -54,8 +54,8 @@ export function Cover({ onOpened }: Props) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-y-0 right-0 z-[2] w-1/2 bg-[#fdf5ec]"
-        style={{ boxShadow: '-10px 0 44px -20px rgba(134,103,57,0.5)' }}
+        className="absolute inset-y-0 right-0 z-[2] w-1/2 bg-[#fdf2f5]"
+        style={{ boxShadow: '-10px 0 44px -20px rgba(184,107,122,0.35)' }}
         animate={opening ? { x: '101%' } : { x: 0 }}
         transition={{ duration: 1.45, delay: 0.5, ease: EASE }}
       >

@@ -53,12 +53,12 @@ export function CornerBranchDaisy({
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
       <g transform={`scale(${sx} ${sy}) translate(${flipX ? -200 : 0} ${flipY ? -200 : 0})`}>
-        <g stroke="#866739" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.55">
+        <g stroke="#b86b7a" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.55">
           <path d="M8 192C8 120 40 60 110 24" />
           <path d="M48 130c-8-10-7-22 4-28 7 9 5 20-4 28Z" />
           <path d="M72 88c-9-8-9-20 1-27 8 8 8 19-1 27Z" />
           <path d="M96 52c-8-9-7-20 3-26 7 8 6 19-3 26Z" />
-          <circle cx="118" cy="28" r="3.5" fill="#866739" opacity="0.4" stroke="none" />
+          <circle cx="118" cy="28" r="3.5" fill="#b86b7a" opacity="0.4" stroke="none" />
         </g>
         <g transform="translate(128 18) scale(0.72)">
           <SoftDaisy petalFill="#e0a9a4" centerFill="#faf0e8" />
@@ -92,7 +92,7 @@ export function BabyFootprints({ className = '' }: { className?: string }) {
 export function DaisyStem({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 100" className={className} aria-hidden>
-      <g stroke="#866739" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.65">
+      <g stroke="#b86b7a" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.65">
         <path d="M24 96V28" />
         <path d="M24 62c-10-4-16-2-18 6 8 2 14 0 18-6Z" />
         <path d="M24 44c10-3 16-1 17 7-8 2-14-1-17-7Z" />
@@ -235,18 +235,18 @@ export function SleepingBabyArt({ className = '' }: { className?: string }) {
       <path
         d="M52 168c8-48 40-72 48-72s40 24 48 72c-14 8-32 12-48 12s-34-4-48-12Z"
         fill="#faf0e8"
-        stroke="#866739"
+        stroke="#b86b7a"
         strokeWidth="1.4"
         opacity="0.85"
       />
-      <circle cx="100" cy="108" r="36" fill="#faf0e8" stroke="#866739" strokeWidth="1.4" />
-      <path d="M78 108c0-8 6-14 10-14" stroke="#866739" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-      <path d="M122 108c0-8-6-14-10-14" stroke="#866739" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-      <path d="M92 118q8 6 16 0" stroke="#866739" strokeWidth="1.1" strokeLinecap="round" opacity="0.45" />
-      <path d="M68 95c6-10 18-16 32-16s26 6 32 16" stroke="#866739" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
+      <circle cx="100" cy="108" r="36" fill="#faf0e8" stroke="#b86b7a" strokeWidth="1.4" />
+      <path d="M78 108c0-8 6-14 10-14" stroke="#b86b7a" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <path d="M122 108c0-8-6-14-10-14" stroke="#b86b7a" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <path d="M92 118q8 6 16 0" stroke="#b86b7a" strokeWidth="1.1" strokeLinecap="round" opacity="0.45" />
+      <path d="M68 95c6-10 18-16 32-16s26 6 32 16" stroke="#b86b7a" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
       <path
         d="M88 74c-4-5-11-5-11 0s7 5 11 0 11-5 11 0-7 5-11 0"
-        stroke="#866739"
+        stroke="#b86b7a"
         strokeWidth="1"
         opacity="0.5"
       />

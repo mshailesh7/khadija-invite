@@ -50,20 +50,20 @@ export function ScratchReveal({
   const paintFoil = useCallback((ctx: CanvasRenderingContext2D, w: number, h: number) => {
     ctx.globalCompositeOperation = 'source-over'
     ctx.globalAlpha = 1
-    ctx.fillStyle = '#f9e6d4'
+    ctx.fillStyle = '#fdf2f5'
     ctx.fillRect(0, 0, w, h)
 
     const g = ctx.createLinearGradient(0, 0, w, h)
-    g.addColorStop(0, '#ede0cc')
-    g.addColorStop(0.45, '#e2d0b4')
-    g.addColorStop(0.7, '#dcc9a8')
-    g.addColorStop(1, '#ead9c4')
+    g.addColorStop(0, '#fce8ee')
+    g.addColorStop(0.45, '#f8d4de')
+    g.addColorStop(0.7, '#f0c4d0')
+    g.addColorStop(1, '#fae0e8')
     ctx.fillStyle = g
     ctx.fillRect(0, 0, w, h)
 
     ctx.globalAlpha = 0.1
     for (let i = 0; i < 700; i++) {
-      ctx.fillStyle = i % 2 === 0 ? '#fff8f0' : '#a8844a'
+      ctx.fillStyle = i % 2 === 0 ? '#fff5f8' : '#d48898'
       ctx.fillRect(Math.random() * w, Math.random() * h, 1.2, 1.2)
     }
     ctx.globalAlpha = 1

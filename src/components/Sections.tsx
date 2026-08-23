@@ -106,6 +106,14 @@ export function Hero() {
             {t.welcomeLine}
           </p>
         </Reveal>
+
+        <Reveal style="fadeinup" duration={1.8} delay={0.92} distance={20}>
+          <p
+            className={`mx-auto mt-5 max-w-[330px] font-light text-ink-soft ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}
+          >
+            {t.inviteLine}
+          </p>
+        </Reveal>
       </div>
 
       <motion.div
@@ -143,7 +151,7 @@ export function ScratchDate() {
               {[t.date.day, t.date.month, t.date.year].map((value, i) => (
                 <div
                   key={value}
-                  className="flex min-h-[120px] items-center justify-center border border-gold/15 bg-cream px-1 py-8 sm:min-h-[136px]"
+                  className="flex min-h-[120px] items-center justify-center border border-gold/20 bg-pink-soft/50 px-1 py-8 sm:min-h-[136px]"
                 >
                   <span
                     className="font-serif font-bold tabular-nums leading-none text-gold"

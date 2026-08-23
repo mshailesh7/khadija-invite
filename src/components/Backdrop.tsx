@@ -20,7 +20,7 @@ export function Backdrop() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(50% 40% at 12% 18%, rgba(224,169,164,0.16), transparent 70%), radial-gradient(50% 40% at 88% 22%, rgba(224,169,164,0.14), transparent 70%), radial-gradient(80% 35% at 50% 100%, rgba(134,103,57,0.08), transparent 70%)',
+            'radial-gradient(50% 40% at 12% 18%, rgba(244,169,190,0.22), transparent 70%), radial-gradient(50% 40% at 88% 22%, rgba(240,160,180,0.18), transparent 70%), radial-gradient(80% 35% at 50% 100%, rgba(200,120,140,0.1), transparent 70%)',
         }}
       />
 
