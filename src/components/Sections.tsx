@@ -42,10 +42,11 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] flex-col items-center justify-center pb-16 pt-24">
-      <SoftDaisy className="pointer-events-none absolute left-3 top-28 h-14 w-14 opacity-35 sm:left-8 sm:h-20 sm:w-20" />
-      <SoftDaisy className="pointer-events-none absolute right-3 top-36 h-12 w-12 opacity-30 sm:right-8 sm:h-16 sm:w-16" />
+      <SoftDaisy className="pointer-events-none absolute left-1/2 top-[4.5rem] h-[4.25rem] w-[4.25rem] -translate-x-1/2 opacity-45 sm:top-24 sm:h-20 sm:w-20" />
+      <SoftDaisy className="pointer-events-none absolute left-5 top-32 h-16 w-16 opacity-40 sm:left-10 sm:top-36 sm:h-20 sm:w-20" />
+      <SoftDaisy className="pointer-events-none absolute right-5 top-44 h-14 w-14 opacity-35 sm:right-10 sm:top-48 sm:h-[4.5rem] sm:w-[4.5rem]" />
 
-      <div className="sheet text-center">
+      <div className="relative z-[1] sheet text-center">
         <Reveal style="fadeinup" duration={1.8} delay={0.35} distance={20}>
           <p
             className={`font-sans text-[11px] font-light uppercase tracking-[0.44em] text-gold/80 ${isRtl ? 'font-urdu leading-relaxed tracking-normal normal-case' : ''}`}
@@ -106,9 +107,6 @@ export function ScratchDate() {
 
   return (
     <section className="relative py-14">
-      <SoftDaisy className="pointer-events-none absolute -left-1 top-8 h-12 w-12 opacity-30" />
-      <SoftDaisy className="pointer-events-none absolute -right-1 top-12 h-10 w-10 opacity-25" />
-
       <div className="sheet text-center">
         <SectionHead title={t.sections.saveTheDate} />
 
@@ -116,7 +114,7 @@ export function ScratchDate() {
           <ScratchReveal
             hint={t.scratch.dateHint}
             hintPlacement="below"
-            brushRadius={40}
+            brushRadius={22}
             revealAt={0.7}
             onRevealed={() => setDateRevealed(true)}
             className="mx-auto w-full max-w-[400px]"

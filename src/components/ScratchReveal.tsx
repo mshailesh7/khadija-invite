@@ -7,7 +7,6 @@ type Props = {
   hintPlacement?: 'overlay' | 'below'
   className?: string
   brushRadius?: number
-  /** 0–1 fraction scratched off before full reveal */
   revealAt?: number
   locked?: boolean
   lockedHint?: string
@@ -19,7 +18,7 @@ export function ScratchReveal({
   hint = '',
   hintPlacement = 'below',
   className = '',
-  brushRadius = 36,
+  brushRadius = 22,
   revealAt = 0.7,
   locked = false,
   lockedHint,
@@ -29,9 +28,10 @@ export function ScratchReveal({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const drawing = useRef(false)
   const lastPoint = useRef<{ x: number; y: number } | null>(null)
-  const gestureStart = useRef<{ x: number; y: number } | null>(null)
   const checkCounter = useRef(0)
   const finished = useRef(false)
+  const foilPainted = useRef(false)
+  const sizeRef = useRef({ w: 0, h: 0 })
   const [done, setDone] = useState(false)
   const [foilReady, setFoilReady] = useState(false)
 
@@ -40,7 +40,6 @@ export function ScratchReveal({
     finished.current = true
     drawing.current = false
     lastPoint.current = null
-    gestureStart.current = null
 
     requestAnimationFrame(() => {
       setDone(true)
@@ -51,7 +50,6 @@ export function ScratchReveal({
   const paintFoil = useCallback((ctx: CanvasRenderingContext2D, w: number, h: number) => {
     ctx.globalCompositeOperation = 'source-over'
     ctx.globalAlpha = 1
-
     ctx.fillStyle = '#f9e6d4'
     ctx.fillRect(0, 0, w, h)
 
@@ -71,7 +69,7 @@ export function ScratchReveal({
     ctx.globalAlpha = 1
   }, [])
 
-  const resize = useCallback(() => {
+  const setupCanvas = useCallback(() => {
     const wrap = wrapRef.current
     const canvas = canvasRef.current
     if (!wrap || !canvas || done) return
@@ -80,25 +78,36 @@ export function ScratchReveal({
     const { width, height } = wrap.getBoundingClientRect()
     if (width < 2 || height < 2) return
 
-    canvas.width = Math.floor(width * dpr)
-    canvas.height = Math.floor(height * dpr)
+    const pxW = Math.floor(width * dpr)
+    const pxH = Math.floor(height * dpr)
+    const sizeChanged = sizeRef.current.w !== pxW || sizeRef.current.h !== pxH
+
+    if (!sizeChanged && foilPainted.current) return
+
+    sizeRef.current = { w: pxW, h: pxH }
+    canvas.width = pxW
+    canvas.height = pxH
     canvas.style.width = `${width}px`
     canvas.style.height = `${height}px`
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    paintFoil(ctx, width, height)
+
+    if (!foilPainted.current || sizeChanged) {
+      paintFoil(ctx, width, height)
+      foilPainted.current = true
+    }
+
     setFoilReady(true)
   }, [done, paintFoil])
 
   useEffect(() => {
     if (done) return
-    resize()
-    const ro = new ResizeObserver(resize)
-    if (wrapRef.current) ro.observe(wrapRef.current)
-    return () => ro.disconnect()
-  }, [resize, done])
+    setupCanvas()
+    const id = window.requestAnimationFrame(setupCanvas)
+    return () => window.cancelAnimationFrame(id)
+  }, [setupCanvas, done])
 
   function pos(e: React.PointerEvent) {
     const canvas = canvasRef.current!
@@ -151,18 +160,12 @@ export function ScratchReveal({
     if (checkCounter.current % 3 === 0) checkProgress(canvas, ctx)
   }
 
-  function resetGesture() {
+  function endDraw(e: React.PointerEvent) {
+    if (canvasRef.current?.hasPointerCapture(e.pointerId)) {
+      canvasRef.current.releasePointerCapture(e.pointerId)
+    }
     drawing.current = false
     lastPoint.current = null
-    gestureStart.current = null
-  }
-
-  function isScrollGesture(x: number, y: number) {
-    const start = gestureStart.current
-    if (!start) return false
-    const dx = x - start.x
-    const dy = y - start.y
-    return Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 14
   }
 
   const hintText = locked && lockedHint ? lockedHint : hint
@@ -180,7 +183,7 @@ export function ScratchReveal({
               ref={canvasRef}
               className={`absolute inset-0 z-[2] ${locked ? 'cursor-not-allowed' : 'cursor-crosshair'}`}
               style={{
-                touchAction: 'pan-y',
+                touchAction: 'none',
                 opacity: foilReady ? 1 : 0,
                 pointerEvents: locked ? 'none' : 'auto',
               }}
@@ -188,26 +191,20 @@ export function ScratchReveal({
                 if (locked || done) return
                 if (e.pointerType === 'mouse' && e.button !== 0) return
 
-                gestureStart.current = { x: e.clientX, y: e.clientY }
                 drawing.current = true
                 lastPoint.current = null
+                canvasRef.current?.setPointerCapture(e.pointerId)
 
                 const p = pos(e)
                 scratchAt(p.x, p.y)
               }}
               onPointerMove={(e) => {
                 if (locked || done || !drawing.current) return
-
-                if (isScrollGesture(e.clientX, e.clientY)) {
-                  resetGesture()
-                  return
-                }
-
                 const p = pos(e)
                 scratchAt(p.x, p.y)
               }}
-              onPointerUp={resetGesture}
-              onPointerCancel={resetGesture}
+              onPointerUp={endDraw}
+              onPointerCancel={endDraw}
             />
             {showOverlayHint && (
               <motion.p

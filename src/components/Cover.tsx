@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { eventMeta } from '../data/invitation'
 import { CornerFloral, LineSprig, WaxSeal } from './decor/Ornaments'
-import { BabyFootprints, SoftDaisy } from './decor/BabyDecor'
+import { BabyFootprints } from './decor/BabyDecor'
 
 type Props = { onOpened: () => void }
 
@@ -61,9 +61,6 @@ export function Cover({ onOpened }: Props) {
       >
         <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold/25 to-transparent" />
       </motion.div>
-
-      <SoftDaisy className="pointer-events-none absolute left-6 top-20 h-16 w-16 opacity-40 sm:left-12 sm:h-20 sm:w-20" />
-      <SoftDaisy className="pointer-events-none absolute right-6 top-24 h-14 w-14 opacity-35 sm:right-12 sm:h-18 sm:w-18" />
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
         <motion.button

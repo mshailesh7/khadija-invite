@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion'
-import { CornerBranchDaisy, SoftDaisy } from './decor/BabyDecor'
 
 /**
- * Fixed atmosphere layer — warm light, drifting petals, and soft corner
- * daisy florals framing the invite like a newborn announcement card.
+ * Fixed atmosphere — seamless cream wash with soft side glows only.
+ * No corner blooms (they mirrored into a split flower at top-centre).
  */
 export function Backdrop() {
   const petals = [
@@ -16,59 +15,24 @@ export function Backdrop() {
   ]
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
-      <motion.div
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-cream" aria-hidden>
+      <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 45% at 22% 12%, rgba(255,250,248,0.85), transparent 65%), radial-gradient(50% 40% at 82% 28%, rgba(224,169,164,0.22), transparent 60%), radial-gradient(70% 50% at 50% 96%, rgba(134,103,57,0.13), transparent 60%)',
+            'radial-gradient(50% 40% at 12% 18%, rgba(224,169,164,0.16), transparent 70%), radial-gradient(50% 40% at 88% 22%, rgba(224,169,164,0.14), transparent 70%), radial-gradient(80% 35% at 50% 100%, rgba(134,103,57,0.08), transparent 70%)',
         }}
-        animate={{ opacity: [0.75, 1, 0.75], scale: [1, 1.05, 1] }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
-
-      {/* Corner daisy frames — reference-style newborn florals */}
-      <CornerBranchDaisy className="absolute -left-6 -top-4 h-44 w-44 opacity-70 sm:h-52 sm:w-52" />
-      <CornerBranchDaisy
-        flipX
-        className="absolute -right-6 -top-4 h-44 w-44 opacity-70 sm:h-52 sm:w-52"
-      />
-      <CornerBranchDaisy
-        flipY
-        className="absolute -bottom-8 -left-4 h-36 w-36 opacity-50 sm:h-44 sm:w-44"
-      />
-      <CornerBranchDaisy
-        flipX
-        flipY
-        className="absolute -bottom-8 -right-4 h-36 w-36 opacity-50 sm:h-44 sm:w-44"
-      />
-
-      <motion.div
-        className="absolute left-[8%] top-[38%] hidden opacity-40 sm:block"
-        animate={{ rotate: [0, 6, 0], scale: [1, 1.04, 1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <SoftDaisy className="h-16 w-16" petalFill="#e8b4b0" />
-      </motion.div>
-      <motion.div
-        className="absolute right-[6%] top-[52%] hidden opacity-35 sm:block"
-        animate={{ rotate: [0, -5, 0], scale: [1, 1.03, 1] }}
-        transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-      >
-        <SoftDaisy className="h-14 w-14" petalFill="#ddb0ac" />
-      </motion.div>
 
       {petals.map((p, i) => (
         <motion.span
           key={i}
-          className="absolute top-[-6%] block rounded-[50%_0_50%_0] bg-blush/20"
+          className="absolute top-[-6%] block rounded-[50%_0_50%_0] bg-blush/15"
           style={{ left: p.left, width: p.size, height: p.size }}
           animate={{ y: ['0vh', '112vh'], x: [0, i % 2 ? -26 : 30, 0], rotate: [0, 220] }}
           transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'linear' }}
         />
       ))}
-
-      <div className="absolute inset-0 bg-cream/30" />
     </div>
   )
 }
