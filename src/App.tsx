@@ -9,16 +9,19 @@ import {
   DressCode,
   Hero,
   InviteCard,
-  Rsvp,
+  ScratchDate,
+  EventTime,
   Timeline,
   Venue,
 } from './components/Sections'
 import { LanguageProvider } from './context/LanguageContext'
+import { RevealFlowProvider, useRevealFlow } from './context/RevealFlowContext'
 import { useMusicBox } from './lib/useMusicBox'
 
 function InvitationApp() {
   const [opened, setOpened] = useState(false)
   const [music, setMusic] = useState(false)
+  const { dateRevealed } = useRevealFlow()
 
   useMusicBox(opened && music)
 
@@ -54,13 +57,26 @@ function InvitationApp() {
             transition={{ duration: 1 }}
           >
             <Hero />
-            <InviteCard />
-            <Countdown />
-            <Timeline />
-            <Venue />
-            <DressCode />
-            <Rsvp />
-            <Closing />
+            <ScratchDate />
+            <EventTime />
+
+            <AnimatePresence>
+              {dateRevealed && (
+                <motion.div
+                  key="rest"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <InviteCard />
+                  <Countdown />
+                  <Timeline />
+                  <Venue />
+                  <DressCode />
+                  <Closing />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.main>
         </>
       )}
@@ -71,7 +87,9 @@ function InvitationApp() {
 export default function App() {
   return (
     <LanguageProvider>
-      <InvitationApp />
+      <RevealFlowProvider>
+        <InvitationApp />
+      </RevealFlowProvider>
     </LanguageProvider>
   )
 }

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
-import { dressPalette, eventMeta } from '../data/invitation'
+import { useRevealFlow } from '../context/RevealFlowContext'
+import { eventMeta } from '../data/invitation'
 import { Breathe, Reveal, Swing } from './Reveal'
+import { ScratchReveal } from './ScratchReveal'
 import {
   ArchPanel,
   Divider,
@@ -12,6 +14,13 @@ import {
   LineSprig,
   MiniFlourish,
 } from './decor/Ornaments'
+import {
+  BabyFootprints,
+  BabyRattle,
+  DaisyStem,
+  SoftDaisy,
+  StarMobile,
+} from './decor/BabyDecor'
 
 function SectionHead({ title }: { title: string }) {
   return (
@@ -33,6 +42,9 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] flex-col items-center justify-center pb-16 pt-24">
+      <SoftDaisy className="pointer-events-none absolute left-3 top-28 h-14 w-14 opacity-35 sm:left-8 sm:h-20 sm:w-20" />
+      <SoftDaisy className="pointer-events-none absolute right-3 top-36 h-12 w-12 opacity-30 sm:right-8 sm:h-16 sm:w-16" />
+
       <div className="sheet text-center">
         <Reveal style="fadeinup" duration={1.8} delay={0.35} distance={20}>
           <p
@@ -53,17 +65,24 @@ export function Hero() {
         </Reveal>
 
         <Reveal style="fadeinup" duration={1.8} delay={0.7} distance={20}>
-          <div className="mx-auto mt-6 w-32">
-            <MiniFlourish className="w-full text-gold" />
+          <div className="mx-auto mt-6 flex items-end justify-center gap-3">
+            <BabyRattle className="h-9 w-6 text-gold/45" />
+            <div className="w-32">
+              <MiniFlourish className="w-full text-gold" />
+            </div>
+            <BabyRattle className="h-9 w-6 -scale-x-100 text-gold/45" />
           </div>
         </Reveal>
 
+        <Reveal style="fadeinup" duration={1.8} delay={0.78} distance={20}>
+          <BabyFootprints className="mx-auto mt-4 h-7 w-16 text-gold/50" />
+        </Reveal>
+
         <Reveal style="fadeinup" duration={1.8} delay={0.85} distance={20}>
-          <p className={`mt-8 text-gold ${isRtl ? 'font-urdu' : 'font-serif'}`} style={{ fontSize: 'var(--fs-meta)' }}>
-            {t.dayLabel} · {t.dateLabel}
-          </p>
-          <p className={`mt-2 text-gold ${isRtl ? 'font-urdu' : 'font-serif'}`} style={{ fontSize: 'var(--fs-meta)' }}>
-            {t.timeLabel}
+          <p
+            className={`mx-auto mt-8 max-w-[320px] font-light text-ink-soft ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}
+          >
+            {t.welcomeLine}
           </p>
         </Reveal>
       </div>
@@ -79,6 +98,119 @@ export function Hero() {
   )
 }
 
+/* ---------------------------------------------------------- scratch date */
+
+export function ScratchDate() {
+  const { t, isRtl } = useLanguage()
+  const { dateRevealed, setDateRevealed } = useRevealFlow()
+
+  return (
+    <section className="relative py-14">
+      <SoftDaisy className="pointer-events-none absolute -left-1 top-8 h-12 w-12 opacity-30" />
+      <SoftDaisy className="pointer-events-none absolute -right-1 top-12 h-10 w-10 opacity-25" />
+
+      <div className="sheet text-center">
+        <SectionHead title={t.sections.saveTheDate} />
+
+        <Reveal style="fadeinup" duration={1.6} distance={30} className="mt-10">
+          <ScratchReveal
+            hint={t.scratch.dateHint}
+            hintPlacement="below"
+            brushRadius={40}
+            revealAt={0.7}
+            onRevealed={() => setDateRevealed(true)}
+            className="mx-auto w-full max-w-[400px]"
+          >
+            <div className="grid grid-cols-[1fr_1fr_1.35fr] gap-2 sm:gap-3" dir="ltr">
+              {[t.date.day, t.date.month, t.date.year].map((value, i) => (
+                <div
+                  key={value}
+                  className="flex min-h-[120px] items-center justify-center border border-gold/15 bg-cream px-1 py-8 sm:min-h-[136px]"
+                >
+                  <span
+                    className="font-serif font-bold tabular-nums leading-none text-gold"
+                    style={{
+                      fontSize:
+                        i === 2
+                          ? 'clamp(36px, 9.5vw, 52px)'
+                          : 'clamp(48px, 13vw, 72px)',
+                    }}
+                  >
+                    {value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </ScratchReveal>
+
+          {dateRevealed && (
+            <motion.div
+              className="mt-8 flex flex-col items-center"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <p
+                className={`text-gold ${isRtl ? 'font-urdu-heading' : 'font-script'}`}
+                style={{ fontSize: 'clamp(28px, 7vw, 36px)', lineHeight: 1.4 }}
+              >
+                {t.date.weekday}
+              </p>
+              <p className="mt-6 font-sans text-[10px] font-light uppercase tracking-[0.32em] text-gold/60">
+                {t.scratch.scrollHint}
+              </p>
+              <motion.div
+                className="mt-3 h-8 w-px bg-gradient-to-b from-gold/70 to-transparent"
+                animate={{ y: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.div>
+          )}
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+/* --------------------------------------------------------------- event time */
+
+export function EventTime() {
+  const { t, isRtl } = useLanguage()
+  const { dateRevealed } = useRevealFlow()
+
+  if (!dateRevealed) return null
+
+  return (
+    <motion.section
+      id="event-time"
+      className="py-14"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="sheet text-center">
+        <SectionHead title={t.sections.time} />
+
+        <Reveal style="fadeinup" duration={1.6} distance={30} className="mt-10">
+          <p
+            className="font-serif font-bold tabular-nums text-gold"
+            style={{ fontSize: 'clamp(52px, 14vw, 72px)', lineHeight: 1 }}
+            dir="ltr"
+          >
+            {t.time.clock}
+          </p>
+          <p
+            className={`mt-4 font-light text-ink-soft ${isRtl ? 'font-urdu' : ''}`}
+            style={{ fontSize: 'var(--fs-meta)' }}
+          >
+            {t.time.note}
+          </p>
+        </Reveal>
+      </div>
+    </motion.section>
+  )
+}
+
 /* ------------------------------------------------------- invitation card */
 
 export function InviteCard() {
@@ -89,9 +221,13 @@ export function InviteCard() {
       <div className="sheet">
         <ArchPanel className="mx-auto w-full max-w-[330px] px-7 pb-12 pt-[26%] text-center">
           <Reveal style="fadeinup" duration={1.6} distance={40}>
-            <Breathe peak={1.08} duration={2} className="mx-auto mb-7 w-8">
-              <Fleuron className="w-full text-gold" />
+            <Breathe peak={1.08} duration={2} className="mx-auto mb-5 w-8">
+              <StarMobile className="w-full text-gold/70" />
             </Breathe>
+          </Reveal>
+
+          <Reveal style="fadeinup" duration={1.6} distance={40}>
+            <BabyFootprints className="mx-auto mb-6 h-8 w-20 text-gold/45" />
           </Reveal>
 
           <Reveal style="fadeinup" duration={1.6} distance={40}>
@@ -110,8 +246,12 @@ export function InviteCard() {
           </Reveal>
 
           <Reveal style="fadeinup" duration={1.6} distance={50}>
-            <div className="mx-auto mt-9 w-32">
-              <LineSprig className="w-full text-gold" />
+            <div className="mx-auto mt-9 flex items-end justify-center gap-4">
+              <DaisyStem className="h-16 w-8 shrink-0 opacity-70" />
+              <div className="w-24">
+                <LineSprig className="w-full text-gold" />
+              </div>
+              <DaisyStem className="h-16 w-8 shrink-0 -scale-x-100 opacity-70" />
             </div>
           </Reveal>
         </ArchPanel>
@@ -340,173 +480,8 @@ export function DressCode() {
             {t.dressCode.note}
           </p>
         </Reveal>
-
-        <h4
-          className={`mt-12 text-gold ${isRtl ? 'font-urdu-heading' : 'font-script'}`}
-          style={{ fontSize: 'var(--fs-subheading)', lineHeight: 1.55 }}
-        >
-          {t.sections.palette}
-        </h4>
-
-        <div className="mt-6 flex items-center justify-center gap-3">
-          {dressPalette.map((color, i) => (
-            <Reveal key={color} style="fadeinup" duration={1.6} delay={i * 0.1} distance={40}>
-              <span className="flex h-[57px] w-[57px] items-center justify-center rounded-full bg-cream-light">
-                <span
-                  className="h-[55px] w-[55px] rounded-full"
-                  style={{ backgroundColor: color, boxShadow: 'inset 0 0 0 1px rgba(134,103,57,0.15)' }}
-                />
-              </span>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
-  )
-}
-
-/* ------------------------------------------------------------------ rsvp */
-
-export function Rsvp() {
-  const { t, isRtl } = useLanguage()
-  const [sent, setSent] = useState(false)
-  const [attending, setAttending] = useState<string>('')
-
-  return (
-    <section className="py-14">
-      <div className="sheet">
-        <SectionHead title={t.sections.rsvp} />
-
-        {sent ? (
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="mt-12 text-center"
-          >
-            <h3
-              className={`text-gold ${isRtl ? 'font-urdu-heading' : 'font-script'}`}
-              style={{ fontSize: 'var(--fs-heading)' }}
-            >
-              {t.rsvp.thankYou}
-            </h3>
-            <p className={`mt-4 ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}>
-              {attending === t.rsvp.options[0] ? t.rsvp.yesReply : t.rsvp.noReply}
-            </p>
-            <div className="mx-auto mt-8 w-40">
-              <LineSprig className="w-full text-gold" />
-            </div>
-          </motion.div>
-        ) : (
-          <Reveal style="fadein" duration={1.6}>
-            <form
-              className="mx-auto mt-10 max-w-[343px] space-y-7"
-              onSubmit={(e) => {
-                e.preventDefault()
-                setSent(true)
-              }}
-            >
-              <Field label={t.rsvp.fields.name} rtl={isRtl}>
-                <input
-                  required
-                  name="name"
-                  className={`w-full border-b border-gold/40 bg-transparent pb-2 font-light text-ink outline-none transition-colors focus:border-gold ${isRtl ? 'font-urdu text-right' : ''}`}
-                  style={{ fontSize: 'var(--fs-body)' }}
-                  dir={isRtl ? 'rtl' : 'ltr'}
-                />
-              </Field>
-
-              <Field label={t.rsvp.fields.guests} rtl={isRtl}>
-                <input
-                  required
-                  type="number"
-                  min={1}
-                  max={20}
-                  defaultValue={1}
-                  name="guests"
-                  className="w-full border-b border-gold/40 bg-transparent pb-2 font-light text-ink outline-none transition-colors focus:border-gold"
-                  style={{ fontSize: 'var(--fs-body)' }}
-                  dir="ltr"
-                />
-              </Field>
-
-              <fieldset>
-                <legend
-                  className={`font-sans text-[11px] font-light uppercase tracking-[0.26em] text-gold ${isRtl ? 'font-urdu normal-case tracking-normal' : ''}`}
-                  style={isRtl ? { fontSize: '13px' } : undefined}
-                >
-                  {t.rsvp.fields.attending}
-                </legend>
-                <div className="mt-4 space-y-3">
-                  {t.rsvp.options.map((opt) => (
-                    <label
-                      key={opt}
-                      className={`flex cursor-pointer items-center gap-3 border px-4 py-3 transition-colors duration-300 ${
-                        attending === opt
-                          ? 'border-gold bg-cream-light/70'
-                          : 'border-gold/30 hover:border-gold/60'
-                      } ${isRtl ? 'flex-row-reverse' : ''}`}
-                    >
-                      <input
-                        required
-                        type="radio"
-                        name="attending"
-                        value={opt}
-                        className="accent-[#866739]"
-                        onChange={() => setAttending(opt)}
-                      />
-                      <span
-                        className={`font-light text-ink ${isRtl ? 'font-urdu text-right' : ''}`}
-                        style={{ fontSize: 'var(--fs-meta)' }}
-                      >
-                        {opt}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              <button
-                type="submit"
-                className={`w-full bg-gold py-4 font-sans text-[11px] font-light uppercase tracking-[0.32em] text-cream-light transition-colors duration-500 hover:bg-gold-deep ${isRtl ? 'font-urdu normal-case tracking-normal' : ''}`}
-                style={isRtl ? { fontSize: '15px' } : undefined}
-              >
-                {t.rsvp.send}
-              </button>
-
-              <p
-                className={`text-center font-light text-ink-soft ${isRtl ? 'font-urdu' : ''}`}
-                style={{ fontSize: isRtl ? '14px' : '15px' }}
-              >
-                {isRtl ? `براہ کرم ${t.rsvp.deadline} تک جواب دیں` : `Kindly reply by ${t.rsvp.deadline}`}
-              </p>
-            </form>
-          </Reveal>
-        )}
-      </div>
-    </section>
-  )
-}
-
-function Field({
-  label,
-  children,
-  rtl,
-}: {
-  label: string
-  children: React.ReactNode
-  rtl?: boolean
-}) {
-  return (
-    <label className="block">
-      <span
-        className={`font-sans text-[11px] font-light uppercase tracking-[0.26em] text-gold ${rtl ? 'font-urdu normal-case tracking-normal' : ''}`}
-        style={rtl ? { fontSize: '13px' } : undefined}
-      >
-        {label}
-      </span>
-      <div className="mt-3">{children}</div>
-    </label>
   )
 }
 
@@ -521,6 +496,8 @@ export function Closing() {
         <Swing className="mx-auto w-[150px]">
           <FlowerMedallion className="w-full text-gold" />
         </Swing>
+
+        <BabyFootprints className="mx-auto mt-6 h-8 w-20 text-gold/45" />
 
         <h2 className={`mt-10 h-script ${isRtl ? 'font-urdu-heading' : ''}`}>{t.closing}</h2>
 

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { eventMeta } from '../data/invitation'
 import { CornerFloral, LineSprig, WaxSeal } from './decor/Ornaments'
+import { BabyFootprints, SoftDaisy } from './decor/BabyDecor'
 
 type Props = { onOpened: () => void }
 
@@ -20,7 +21,7 @@ export function Cover({ onOpened }: Props) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] overflow-hidden bg-cream"
+      className={`fixed inset-0 z-[60] overflow-hidden bg-cream ${opening ? 'pointer-events-none' : ''}`}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.55 }}
     >
@@ -61,6 +62,9 @@ export function Cover({ onOpened }: Props) {
         <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold/25 to-transparent" />
       </motion.div>
 
+      <SoftDaisy className="pointer-events-none absolute left-6 top-20 h-16 w-16 opacity-40 sm:left-12 sm:h-20 sm:w-20" />
+      <SoftDaisy className="pointer-events-none absolute right-6 top-24 h-14 w-14 opacity-35 sm:right-12 sm:h-18 sm:w-18" />
+
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
         <motion.button
           type="button"
@@ -94,6 +98,7 @@ export function Cover({ onOpened }: Props) {
           transition={opening ? { duration: 0.85 } : { duration: 1.3, delay: 0.75 }}
         >
           <LineSprig className="h-8 w-40 text-gold/60" />
+          <BabyFootprints className="mt-5 h-7 w-16 text-gold/45" />
           <p
             className={`mt-4 text-gold ${isRtl ? 'font-urdu' : 'font-sans text-[12px] font-light uppercase tracking-[0.44em]'}`}
             style={isRtl ? { fontSize: '15px' } : undefined}
