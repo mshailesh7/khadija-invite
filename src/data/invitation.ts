@@ -5,6 +5,8 @@ export const eventMeta = {
   initial: 'K',
   eventDate: '2026-08-24T19:00:00',
   venueUrl: 'https://share.google/aMMtrTYbGhEFxxrgk',
+  /** Drop a photo at public/baby-photo.jpg to replace the illustration */
+  babyPhoto: '/baby-photo.jpg',
 } as const
 
 export type LocaleCopy = {
@@ -39,6 +41,7 @@ export type LocaleCopy = {
   sections: {
     saveTheDate: string
     time: string
+    littleOne: string
     countdown: string
     timeline: string
     venue: string
@@ -108,6 +111,7 @@ Hotel Mina International`,
     sections: {
       saveTheDate: 'Save the Date',
       time: 'Time',
+      littleOne: 'Our Little Princess',
       countdown: 'The Celebration Begins',
       timeline: 'Order of the Day',
       venue: 'Venue',
@@ -181,6 +185,7 @@ Hotel Mina International`,
     sections: {
       saveTheDate: 'تاریخ محفوظ کریں',
       time: 'وقت',
+      littleOne: 'ہماری پیاری شہزادی',
       countdown: 'جشن شروع ہوتا ہے',
       timeline: 'تقریب کا پروگرام',
       venue: 'مقام',

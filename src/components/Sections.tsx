@@ -16,10 +16,15 @@ import {
 } from './decor/Ornaments'
 import {
   BabyFootprints,
+  BabyPhotoFrame,
   BabyRattle,
   DaisyStem,
+  Pacifier,
+  RubberDuck,
   SoftDaisy,
   StarMobile,
+  TeddyBear,
+  ToyShelf,
 } from './decor/BabyDecor'
 
 function SectionHead({ title }: { title: string }) {
@@ -45,6 +50,9 @@ export function Hero() {
       <SoftDaisy className="pointer-events-none absolute left-1/2 top-[4.5rem] h-[4.25rem] w-[4.25rem] -translate-x-1/2 opacity-45 sm:top-24 sm:h-20 sm:w-20" />
       <SoftDaisy className="pointer-events-none absolute left-5 top-32 h-16 w-16 opacity-40 sm:left-10 sm:top-36 sm:h-20 sm:w-20" />
       <SoftDaisy className="pointer-events-none absolute right-5 top-44 h-14 w-14 opacity-35 sm:right-10 sm:top-48 sm:h-[4.5rem] sm:w-[4.5rem]" />
+      <TeddyBear className="pointer-events-none absolute left-3 top-[52%] h-11 w-10 opacity-30 sm:left-6" />
+      <RubberDuck className="pointer-events-none absolute right-3 top-[55%] h-9 w-11 opacity-30 sm:right-6" />
+      <Pacifier className="pointer-events-none absolute left-6 bottom-28 h-8 w-8 opacity-25 sm:bottom-32" />
 
       <div className="relative z-[1] sheet text-center">
         <Reveal style="fadeinup" duration={1.8} delay={0.35} distance={20}>
@@ -63,6 +71,18 @@ export function Hero() {
           >
             {t.babyNameShort}
           </h1>
+        </Reveal>
+
+        <Reveal style="fadeinup" duration={1.8} delay={0.62} distance={20}>
+          <BabyPhotoFrame
+            src={eventMeta.babyPhoto}
+            alt={t.babyName}
+            className="mt-7 w-[200px] sm:w-[220px]"
+          />
+        </Reveal>
+
+        <Reveal style="fadeinup" duration={1.8} delay={0.68} distance={20}>
+          <ToyShelf className="mt-6 scale-90 sm:scale-100" />
         </Reveal>
 
         <Reveal style="fadeinup" duration={1.8} delay={0.7} distance={20}>
@@ -294,7 +314,9 @@ export function Countdown() {
       <div className="sheet">
         <SectionHead title={t.sections.countdown} />
 
-        <Reveal style="fadein" duration={1.6} className="mt-10">
+        <ToyShelf className="mt-6 scale-[0.85] opacity-80 sm:scale-90" />
+
+        <Reveal style="fadein" duration={1.6} className="mt-8">
           <div className="flex items-start justify-center gap-1.5" dir="ltr">
             {units.map(([value, label], i) => (
               <div key={label} className="flex items-start">
@@ -472,6 +494,8 @@ export function DressCode() {
         >
           {t.dressCode.wear}
         </h3>
+
+        <ToyShelf className="mx-auto mt-6 max-w-[320px] scale-[0.8] opacity-75" />
 
         <Reveal style="fadeinup" duration={1.6} distance={20}>
           <p className={`mx-auto mt-4 max-w-[301px] ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}>
