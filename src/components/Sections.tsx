@@ -69,7 +69,7 @@ export function Hero() {
             className={`mt-8 text-gold ${isRtl ? 'font-urdu-heading' : 'font-script'}`}
             style={{ fontSize: 'var(--fs-name)', lineHeight: isRtl ? 1.6 : 1.1 }}
           >
-            {t.babyNameShort}
+            {t.babyName}
           </h1>
         </Reveal>
 
@@ -109,7 +109,7 @@ export function Hero() {
 
         <Reveal style="fadeinup" duration={1.8} delay={0.92} distance={20}>
           <p
-            className={`mx-auto mt-5 max-w-[330px] font-light text-ink-soft ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}
+            className={`mx-auto mt-5 max-w-[330px] whitespace-pre-line font-light text-ink-soft ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}
           >
             {t.inviteLine}
           </p>
@@ -264,7 +264,7 @@ export function InviteCard() {
               className={`my-6 text-gold ${isRtl ? 'font-urdu-heading' : 'font-script'}`}
               style={{ fontSize: 'var(--fs-venue)', lineHeight: isRtl ? 1.7 : 1.25 }}
             >
-              {t.babyNameShort}
+              {t.babyName}
             </p>
             <p className={`whitespace-pre-line text-ink-soft ${isRtl ? 'font-urdu t-body-urdu' : 't-body'}`}>
               {t.messageAfter}

@@ -1,6 +1,6 @@
-# Khadija Vadgama — Digital Invitation
+# Khadija Wadgama — Digital Invitation
 
-An interactive, mobile-first digital invitation welcoming **Khadija Vadgama** —
+An interactive, mobile-first digital invitation welcoming **Khadija Wadgama** —
 Monday, 24 August 2026 · Hotel Mina International.
 
 The layout, type scale, colour palette, section order and animation behaviour are

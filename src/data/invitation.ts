@@ -71,14 +71,14 @@ export type LocaleCopy = {
 
 export const copy: Record<Lang, LocaleCopy> = {
   en: {
-    babyName: 'Khadija Vadgama',
+    babyName: 'Khadija Wadgama',
     babyNameShort: 'Khadija',
     parents: 'Wadgama Family',
     occasion: 'A Little Princess, A Lot of Love',
     welcomeLine:
-      'With tiny hands, sweet smiles & a whole lot of happiness, we\u2019re celebrating our little baby girl!',
+      'With hearts full of joy, the Wadgama Family warmly invites you to join us in celebrating the arrival of our little princess. 💕✨',
     inviteLine:
-      'You\u2019re warmly invited to join us for a special evening of Dinner & Celebration as we celebrate our precious little princess.',
+      'We would be delighted to have you with us for an evening of love, laughter, delicious food & beautiful memories.\n\nPlease join us and make this celebration even more special. 🌸',
     date: {
       day: '30',
       month: '08',
@@ -89,18 +89,16 @@ export const copy: Record<Lang, LocaleCopy> = {
       yearLabel: 'YYYY',
     },
     time: {
-      clock: '20:00',
+      clock: '8:00 PM',
       note: 'Dinner & Celebration',
     },
-    messageBefore: `You're warmly invited to join us for a special evening of
-Dinner & Celebration as we celebrate our precious little princess.`,
-    messageAfter: `Come join us for a lovely evening filled with
-good food, warm conversations & beautiful memories.
+    messageBefore: `With hearts full of joy, the Wadgama Family warmly invites you to join us in celebrating the arrival of our little princess. 💕✨`,
+    messageAfter: `We would be delighted to have you with us for an evening of love, laughter, delicious food & beautiful memories.
 
-Your presence will make our celebration even more special.
+Please join us and make this celebration even more special. 🌸
 
 30 · 08 · 2026
-20:00
+8:00 PM
 
 1st Floor, Mina International
 Jogeshwari West, Mumbai`,
@@ -125,9 +123,9 @@ Jogeshwari West, Mumbai`,
       seconds: 'Seconds',
     },
     timeline: [
-      { time: '20:00', title: 'Welcome' },
-      { time: '20:30', title: 'Dinner' },
-      { time: '21:30', title: 'Celebration' },
+      { time: '8:00 PM', title: 'Welcome' },
+      { time: '8:30 PM', title: 'Dinner' },
+      { time: '9:30 PM', title: 'Celebration' },
     ],
     dressCode: {
       intro:
@@ -154,9 +152,9 @@ Jogeshwari West, Mumbai`,
     parents: 'وڈگامہ خاندان',
     occasion: 'ایک چھوٹی شہزادی، بے حد محبت',
     welcomeLine:
-      'ننھے ہاتھوں، میٹھی مسکراہٹوں اور بے انتہا خوشیوں کے ساتھ، ہم اپنی پیاری بیٹی کا جشن منا رہے ہیں!',
+      'دلوں بھر کر خوشی کے ساتھ، وڈگامہ خاندان آپ کو اپنی پیاری شہزادی کی آمد کے جشن میں شامل ہونے کی دعوت دیتا ہے۔ 💕✨',
     inviteLine:
-      'ہم آپ کو رات کے کھانے اور جشن کی ایک خاص شام میں شامل ہونے کی گرمجوشی سے دعوت دیتے ہیں، جہاں ہم اپنی پیاری شہزادی کا جشن منائیں گے۔',
+      'ہم آپ کی موجودگی میں محبت، ہنسی، لذیذ کھانے اور خوبصورت یادوں کی ایک شام گزارنا چاہتے ہیں۔\n\nبراہِ کرم تشریف لائیں اور ہمارے جشن کو اور بھی خاص بنائیں۔ 🌸',
     date: {
       day: '۳۰',
       month: '۰۸',
@@ -167,18 +165,16 @@ Jogeshwari West, Mumbai`,
       yearLabel: 'YYYY',
     },
     time: {
-      clock: '۲۰:۰۰',
+      clock: '۸:۰۰ PM',
       note: 'رات کا کھانا اور جشن',
     },
-    messageBefore: `ہم آپ کو رات کے کھانے اور جشن کی ایک خاص شام میں
-شامل ہونے کی گرمجوشی سے دعوت دیتے ہیں۔`,
-    messageAfter: `ہمارے ساتھ ایک خوبصورت شام گزاریں —
-اچھی غذا، گرم گفتگو اور یادگار لمحات۔
+    messageBefore: `دلوں بھر کر خوشی کے ساتھ، وڈگامہ خاندان آپ کو اپنی پیاری شہزادی کی آمد کے جشن میں شامل ہونے کی دعوت دیتا ہے۔ 💕✨`,
+    messageAfter: `ہم آپ کی موجودگی میں محبت، ہنسی، لذیذ کھانے اور خوبصورت یادوں کی ایک شام گزارنا چاہتے ہیں۔
 
-آپ کی موجودگی ہمارے جشن کو اور بھی خاص بنائے گی۔
+براہِ کرم تشریف لائیں اور ہمارے جشن کو اور بھی خاص بنائیں۔ 🌸
 
 ۳۰ · ۰۸ · ۲۰۲۶
-۲۰:۰۰
+۸:۰۰ PM
 
 1st Floor, Mina International
 Jogeshwari West, Mumbai`,
@@ -203,9 +199,9 @@ Jogeshwari West, Mumbai`,
       seconds: 'سیکنڈ',
     },
     timeline: [
-      { time: '۲۰:۰۰', title: 'خوش آمدید' },
-      { time: '۲۰:۳۰', title: 'رات کا کھانا' },
-      { time: '۲۱:۳۰', title: 'جشن' },
+      { time: '۸:۰۰ PM', title: 'خوش آمدید' },
+      { time: '۸:۳۰ PM', title: 'رات کا کھانا' },
+      { time: '۹:۳۰ PM', title: 'جشن' },
     ],
     dressCode: {
       intro: 'اس خاص شام کے لیے براہِ کرم اپنے بہترین اور خوبصورت لباس میں تشریف لائیں۔',
